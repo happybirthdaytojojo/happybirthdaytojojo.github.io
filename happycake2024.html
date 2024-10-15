@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Happy Birthday</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('./fonts/digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden_dev.js"></script>
+    <script type="text/javascript" src="js/functions_dev.js"></script>
+</head>
+
+<body>
+
+    <audio class="song" loop autoplay>
+        <source src="./mus/hbd.mpeg"></source>
+    </audio>
+	
+	
+		    <a href="https://example.com" style="
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+        padding-right: 20px;
+    ">></a>
+	
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+			
+JoJo又长大一岁啦！祝你25岁生日快乐🎂🎉✨！<p>
+
+在过去的一年时光中，我们一起成长💑，一起经历🌄。</br>
+我们在栖霞区度过了第一个冬天❄，在生科院堆的雪兔子🐇起码持续了3天。
+我们在南大和园51栋402🏠一起跨年⌚，炫了一整碗金针菇🍄后还绕着和园溜弯🚶‍。
+4月15日，我们的💎恋爱小金库💎正式设立，开始精打细算过日子啦。
+4月19日，我们永远的离开了402，前往了我们的新家香山苑6栋201。
+5月17日，你通过答辩🎓，完结了在南大生科院漫长的硕士生涯🧬。
+7月1日，你在汉欣正式上班的第一天，以后的每分每秒都能听见Money💴进袋的声音。
+7月6日，一个小生命🐱加入了我们的二人世界，YoYo成为了她的名字。
+10月1日，我们在国庆勇闯厨房，什么虾🦐兵蟹🦀将完全不在话下。<p>
+
+我们彼此陪伴👨🏼‍🤝‍👨🏼、恩爱💑与争吵，在多个角落留下了我们的痕迹。</br>
+我们在微信上发送了32,351条消息⌨，总计209,299字，将近《素食者》的三倍📚。
+我们一共骑行了3,168公里，载着你走过了1,680公里🛵，大约是地球🌏周长的4.2%。
+我们在恋爱小金库中积攒了8,488元💲，使用了6,620元来好好享受生活💱。
+我们给小YoYo铲了大约206次粑粑，约8.2斤，相当于两个小YoYo的重量⚖。
+我们大约点了95次外卖📦，为我们节省了近2000元💴，相当于一辆电动车的费用。<p>
+
+未来的我们还有很多故事要去撰写，希望JoJo可以在自己的25岁：
+身体更加健康🥦‍，家人更加和睦的👨‍👩‍👧，爱情更加稳固💑，事业更加兴盛👑！
+最后，再次祝福JoJo✨生✨日✨快✨乐✨！
+
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+						JoJo正见证着这个世界的分秒变化
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						YuYu会永远陪JoJo坐看云卷云舒，花开花落
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		<!-- Example date: 1908.04.08-->
+		together.setFullYear(1999, 10, 17);
+		together.setHours(8);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 50);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 5);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+	<!-- Greensock -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
