@@ -93,8 +93,13 @@ JoJo又长大一岁啦！祝你25岁生日快乐🎂🎉✨！<p>
 
     // 页面加载时，隐藏 #code 的内容
     $(document).ready(function() {
+	var audioElement = document.querySelector('.song');
         var originalCode = $("#code").html();  // 保存原始HTML内容
         $("#code").html('');  // 页面加载时清空内容
+
+        // 确保音频在页面加载时处于暂停状态
+        audioElement.pause();
+        audioElement.currentTime = 0;  // 重置音频到开始位置
 
         // 音乐播放提示弹窗，用户选择后再执行动画
         window.addEventListener('load', () => {
@@ -107,7 +112,7 @@ JoJo又长大一岁啦！祝你25岁生日快乐🎂🎉✨！<p>
                 cancelButtonText: 'No',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.querySelector('.song').play();
+                    audioElement.play();
                 }
 
                 // 用户选择后再启动动画
