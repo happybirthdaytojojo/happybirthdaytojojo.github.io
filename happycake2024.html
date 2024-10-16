@@ -18,7 +18,7 @@
 
 <body>
 
-    <audio class="song" loop autoplay>
+    <audio class="song" autoplay>
         <source src="./mus/hbd.mpeg"></source>
     </audio>
 	
@@ -81,40 +81,66 @@ JoJo又长大一岁啦！祝你25岁生日快乐🎂🎉✨！<p>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var offsetX = $("#loveHeart").width() / 2;
-		var offsetY = $("#loveHeart").height() / 2 - 55;
-		var together = new Date();
-		<!-- Example date: 1908.04.08-->
-		together.setFullYear(1999, 10, 17);
-		together.setHours(8);
-		together.setMinutes(0);
-		together.setSeconds(0);
-		together.setMilliseconds(0);
-		
-		if (!document.createElement('canvas').getContext) {
-			var msg = document.createElement("div");
-			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-			document.body.appendChild(msg);
-			$("#code").css("display", "none")
-			$("#copyright").css("position", "absolute");
-			$("#copyright").css("bottom", "10px");
-		    document.execCommand("stop");
-		} else {
-			setTimeout(function () {
-				startHeartAnimation();
-			}, 50);
+<script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();
+    together.setFullYear(1999, 10, 17);  // 设置你的具体日期
+    together.setHours(8);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
 
-			timeElapse(together);
-			setInterval(function () {
-				timeElapse(together);
-			}, 5);
+    // 页面加载时，隐藏 #code 的内容
+    $(document).ready(function() {
+        var originalCode = $("#code").html();  // 保存原始HTML内容
+        $("#code").html('');  // 页面加载时清空内容
 
-			adjustCodePosition();
-			$("#code").typewriter();
-		}
-	</script>
+        // 音乐播放提示弹窗，用户选择后再执行动画
+        window.addEventListener('load', () => {
+            Swal.fire({
+                title: 'Do you want to play music',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelector('.song').play();
+                }
+
+                // 用户选择后再启动动画
+                if (document.createElement('canvas').getContext) {
+                    setTimeout(function () {
+                        startHeartAnimation(); // 开始心形动画
+                    }, 50);
+
+                    timeElapse(together); // 计算时间流逝
+                    setInterval(function () {
+                        timeElapse(together);
+                    }, 500);  // 设定每500ms更新一次时间显示
+
+                    adjustCodePosition();  // 调整代码位置
+
+                    // 恢复原始HTML内容，并启动打字机效果
+                    $("#code").html(originalCode);  
+                    $("#code").typewriter();  // 启动打字机效果
+                } else {
+                    // 不支持HTML5的浏览器提示
+                    var msg = document.createElement("div");
+                    msg.id = "errorMsg";
+                    msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+                    document.body.appendChild(msg);
+                    $("#code").css("display", "none");
+                    $("#copyright").css("position", "absolute");
+                    $("#copyright").css("bottom", "10px");
+                    document.execCommand("stop");
+                }
+            });
+        });
+    });
+</script>
 	<!-- Greensock -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <!-- Sweetalert -->
