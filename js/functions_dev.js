@@ -1,5 +1,11 @@
 // trigger to play music in the background with sweetalert
 window.addEventListener('load', () => {
+    // 确保页面加载时音频处于暂停状态
+    const audioElement = document.querySelector('.song');
+    audioElement.pause();  // 确保音频不会自动播放
+    audioElement.currentTime = 0;  // 重置音频到起始位置
+
+    // 弹出提示，询问用户是否要播放音乐
     Swal.fire({
         title: 'Do you want to play music',
         showCancelButton: true,
@@ -9,7 +15,7 @@ window.addEventListener('load', () => {
         cancelButtonText: 'No',
     }).then((result) => {
         if (result.isConfirmed) {
-            document.querySelector('.song').play();
+            audioElement.play();
         }
     });
 });
