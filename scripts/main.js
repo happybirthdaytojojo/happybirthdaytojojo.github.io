@@ -9,7 +9,7 @@
   const CANVASHEIGHT = 600
   const CANVASID = 'canvas'
 
-  let texts = ['无论上一年的愿望是否实现','现在让JoJo再次许愿','共同期待美好发生']
+  let texts = ['欢迎JoJo','无论上一年的愿望是否实现','现在让JoJo再次许愿','共同期待美好发生']
 
   let canvas,
     ctx,
