@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Make a wish</title>
+	<link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<style type="text/css">
+		body {
+			background: #060e1b;
+			overflow: hidden;
+		}
+	</style>
+
+	<style>
+		.htmleaf-header {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 10;
+			width: 90%;
+			max-width: 800px;
+		}
+
+		.two-column-text {
+			display: flex;
+			justify-content: center;
+			gap: 40px;
+		}
+
+		.text-column {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.flicker-text {
+			font-size: 2rem;
+			font-weight: 300;
+			letter-spacing: 4px;
+			font-family: 'Microsoft YaHei', sans-serif;
+			line-height: 1.4;
+		}
+
+		.flicker-text span {
+			display: inline-block;
+			animation: flicker 3s infinite alternate;
+			text-shadow: 0 0 5px currentColor;
+		}
+
+		/* 为每个文字设置不同的动画延迟和颜色 */
+
+		.flicker-text span:nth-child(2) {
+			animation-delay: 0.2s;
+			color: #df6659;
+		}
+
+		.flicker-text span:nth-child(3) {
+			animation-delay: 0.3s;
+			color: #2fa8ec;
+		}
+
+		.flicker-text span:nth-child(4) {
+			animation-delay: 0.4s;
+			color: #d0d6d6;
+		}
+
+		.flicker-text span:nth-child(6) {
+			animation-delay: 0.6s;
+			color: #ef3f52;
+		}
+
+		.flicker-text span:nth-child(7) {
+			animation-delay: 0.7s;
+			color: #64448f;
+		}
+
+		.flicker-text span:nth-child(8) {
+			animation-delay: 0.8s;
+			color: #3755ad;
+		}
+
+		.flicker-text span:nth-child(9) {
+			animation-delay: 0.9s;
+			color: #3498DB;
+		}
+
+		.flicker-text span:nth-child(12) {
+			animation-delay: 1.2s;
+			color: #df6659;
+		}
+
+		.flicker-text span:nth-child(13) {
+			animation-delay: 1.3s;
+			color: #2fa8ec;
+		}
+
+		.flicker-text span:nth-child(14) {
+			animation-delay: 1.4s;
+			color: #d0d6d6;
+		}
+
+		.flicker-text span:nth-child(16) {
+			animation-delay: 1.6s;
+			color: #ef3f52;
+		}
+
+		.flicker-text span:nth-child(17) {
+			animation-delay: 1.7s;
+			color: #64448f;
+		}
+
+		.flicker-text span:nth-child(18) {
+			animation-delay: 1.8s;
+			color: #3755ad;
+		}
+
+		.flicker-text span:nth-child(19) {
+			animation-delay: 1.9s;
+			color: #3498DB;
+		}
+
+
+		.flicker-text span:nth-child(22) {
+			animation-delay: 2.2s;
+			color: #df6659;
+		}
+
+		.flicker-text span:nth-child(23) {
+			animation-delay: 2.3s;
+			color: #2fa8ec;
+		}
+
+		.flicker-text span:nth-child(24) {
+			animation-delay: 2.4s;
+			color: #d0d6d6;
+		}
+
+		.flicker-text span:nth-child(26) {
+			animation-delay: 2.6s;
+			color: #ef3f52;
+		}
+
+		.flicker-text span:nth-child(27) {
+			animation-delay: 2.7s;
+			color: #64448f;
+		}
+
+		@keyframes flicker {
+
+			0%,
+			100% {
+				opacity: 0.2;
+				transform: translateY(0);
+			}
+
+			25% {
+				opacity: 0.8;
+				transform: translateY(-2px);
+			}
+
+			50% {
+				opacity: 1;
+				transform: translateY(0);
+				text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+			}
+
+			75% {
+				opacity: 0.6;
+				transform: translateY(2px);
+			}
+		}
+
+		/* 响应式设计 */
+		@media (max-width: 768px) {
+			.flicker-text {
+				font-size: 2rem;
+				letter-spacing: 2px;
+			}
+
+			.two-column-text {
+				gap: 20px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.flicker-text {
+				font-size: 1.6rem;
+				letter-spacing: 1px;
+			}
+
+			.two-column-text {
+				gap: 10px;
+			}
+		}
+	</style>
+
+<style>
+/* 页面初始为全黑 */
+body {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 初始隐藏所有内容，点击后缓缓出现 */
+.htmleaf-container {
+    opacity: 0;
+    transition: opacity 4s ease-in-out;
+}
+
+/* 显示内容后 */
+.show-content .htmleaf-container {
+    opacity: 1;
+}
+</style>
+
+</head>
+
+<body>
+
+	<a href="../open2026.html" style="
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 20px;
+        padding-right: 20px;
+    ">></a>
+
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<div class="two-column-text">
+				<div class="text-column">
+					<div class="flicker-text">
+						<br><br><span>面</span><br><span>对</span><br><span>无</span><br><span>垠</span><br><span>的</span><br><span>星</span><br><span>河</span>
+					</div>
+				</div>
+				<div class="text-column">
+					<div class="flicker-text">
+						<span>许</span><br><span>下</span><br><span>自</span><br><span>己</span><br><span>最</span><br><span>珍</span><br><span>贵</span><br><span>的</span><br><span>愿</span><br><span>望</span><br><span>吧</span>
+					</div>
+				</div>
+			</div>
+		</header>
+		<canvas id="canvas"></canvas>
+	</div>
+
+
+<!-- 音乐播放器 -->
+<audio id="backgroundMusic" loop>
+    <source src="./audio/makewish.mp3" type="audio/mpeg">
+    您的浏览器不支持音频播放
+</audio>
+
+<script>
+// 页面加载完成后显示音乐播放确认弹窗
+document.addEventListener('DOMContentLoaded', function() {
+    // 延迟显示弹窗，确保页面完全加载
+    setTimeout(function() {
+        Swal.fire({
+            title: 'Do you want to play music?',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            backdrop: 'rgba(0,0,0,0.6)'
+        }).then((result) => {
+            // 无论用户选择什么，都显示内容
+            document.body.classList.add('show-content');
+            
+            if (result.isConfirmed) {
+                // 用户选择播放音乐
+                const music = document.getElementById('backgroundMusic');
+                music.play().catch(e => {
+                    // 如果自动播放被阻止，静默处理
+                    // 添加点击事件监听，用户点击后播放音乐
+                    document.addEventListener('click', function playMusicOnClick() {
+                        music.play();
+                        document.removeEventListener('click', playMusicOnClick);
+                    }, { once: true });
+                });
+            }
+        });
+    });
+});
+</script>
+
+	<script type="text/javascript">
+		"use strict";
+		var canvas = document.getElementById('canvas'),
+			ctx = canvas.getContext('2d'),
+			w = canvas.width = window.innerWidth,
+			h = canvas.height = window.innerHeight,
+
+			hue = 217,
+			stars = [],
+			count = 0,
+			maxStars = 1400;
+
+		// Thanks @jackrugile for the performance tip! http://codepen.io/jackrugile/pen/BjBGoM
+		// Cache gradient
+		var canvas2 = document.createElement('canvas'),
+			ctx2 = canvas2.getContext('2d');
+		canvas2.width = 100;
+		canvas2.height = 100;
+		var half = canvas2.width / 2,
+			gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+		gradient2.addColorStop(0.025, '#fff');
+		gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+		gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+		gradient2.addColorStop(1, 'transparent');
+
+		ctx2.fillStyle = gradient2;
+		ctx2.beginPath();
+		ctx2.arc(half, half, half, 0, Math.PI * 2);
+		ctx2.fill();
+
+		// End cache
+
+		function random(min, max) {
+			if (arguments.length < 2) {
+				max = min;
+				min = 0;
+			}
+
+			if (min > max) {
+				var hold = max;
+				max = min;
+				min = hold;
+			}
+
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		var Star = function () {
+
+			this.orbitRadius = random(w / 2 - 50);
+			this.radius = random(100, this.orbitRadius) / 10;
+			this.orbitX = w / 2;
+			this.orbitY = h / 2;
+			this.timePassed = random(0, maxStars);
+			this.speed = random(this.orbitRadius) / 100000;
+			this.alpha = random(2, 10) / 10;
+
+			count++;
+			stars[count] = this;
+		}
+
+		Star.prototype.draw = function () {
+			var x = Math.sin(this.timePassed + 1) * this.orbitRadius + this.orbitX,
+				y = Math.cos(this.timePassed) * this.orbitRadius / 2 + this.orbitY,
+				twinkle = random(10);
+
+			if (twinkle === 1 && this.alpha > 0) {
+				this.alpha -= 0.05;
+			} else if (twinkle === 2 && this.alpha < 1) {
+				this.alpha += 0.05;
+			}
+
+			ctx.globalAlpha = this.alpha;
+			ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+			this.timePassed += this.speed;
+		}
+
+		for (var i = 0; i < maxStars; i++) {
+			new Star();
+		}
+
+		function animation() {
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.globalAlpha = 0.8;
+			ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
+			ctx.fillRect(0, 0, w, h)
+
+			ctx.globalCompositeOperation = 'lighter';
+			for (var i = 1, l = stars.length; i < l; i++) {
+				stars[i].draw();
+			};
+
+			window.requestAnimationFrame(animation);
+		}
+
+		animation();
+	</script>
+</body>
+
+</html>

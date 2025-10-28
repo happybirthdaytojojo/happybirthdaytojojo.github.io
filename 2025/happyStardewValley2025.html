@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./scripts/functions_dev.js"></script>
+	<!-- Greensock -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Happy StardewValley</title>
+    <style>
+        /* 控制生日快乐文字起落的 -80px是最终的位置*/
+        @keyframes drop {
+            0% {
+                top: -40%;
+            }
+
+            100% {
+                top: -80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="booting" id="bootSection">
+        <div>
+            <h1>
+                <img src="img/loading.png" class="gif-loading"><br>
+            </h1>
+        </div>
+    </section>
+
+    <main class="desktop">
+
+<img src="./img/happybirthday2.png" alt=""
+     id="birthdayImg"
+     style="display: block; margin: 0 auto; transform: scale(0.5); position: relative; opacity: 0; transition: opacity 2s ease;">
+
+<div id="code"
+     style="display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 200px; margin-top: -130px; opacity: 0; transition: opacity 2s ease;">
+转眼间，和JoJo宝贝在一起的第三个生日又来啦🎂🎉✨！</br>
+回首过去的一年，JoJo🤝YuYu🤝YoYo又携手(爪)走过了好多好多难忘的时光💑，留下了好多好多美好的回忆📸。</br>
+我们在去年的11月11日带领小YoYo🐱去医院🏥处理了她的尾巴，同时完成了绝育手术🩼，可把小Yo宝折腾坏了🤕。好在在我们的精心照顾下，她恢复得很好💪🏻。</br>
+11月24日你突然发烧引发耳膜炎👂，小Yo也因为呕吐去了好几趟医院💊，不过所有坏运气都随时间消散啦🎡。</br>
+25年的1月1日你在原神里十连双金🍀，顺利拿到了火神和琴的4命。1月12日，我们和小伙伴一起登顶紫金山🌄，快把我累死了！</br>
+在上一年度你拿下了公司的优秀新人奖🥇，真是太棒啦！是钻石总会发光💎，光明的未来在向我们招手啦💰！</br>
+2月28日，我们给小Yo宝做了梯子🪜，前后用了十多天终于完成🌟，不过小Yo宝喜欢，一些都值得了🌈。4月6日，一家三口在野外晒太阳很是惬意呢⛱️🌞。</br>
+5月3日，我们去了郴州🏡，一起登顶矿山公园🌋，在湖边漫步🏞️，品尝脆皖鱼🐟，都是很美好的体验。5月31日，我们尝试包粽子🥟，咸蛋猪肉棕咋就那么好吃呢！</br>
+7月14日，我从哈萨克斯坦回来，你出发去了新加坡🛫，无缝衔接照顾小Yo，可把她美坏了。7月19日，你在双子塔留下了一张超帅的照片😎。</br>
+9月5日，我们进入了星露谷的世界👨‍🌾，熬夜种田🌽，采矿打怪⚔️，帮助老乡🤼，真的是不亦乐乎啊🤸！</br>
+10月4日，你和我去了鹤壁🏡，品尝了胡辣汤🍜，游览了朝歌台🏕️，学习包饺子🥟，一起在中秋吃了大闸蟹🦀。正式开启人生的第一篇章📖。</br>
+</br>
+25岁缓缓而过🎢，翻看相册发现了太多的美好瞬间✨，我们争吵总能回归于好🧑‍🤝‍🧑，我们懊恼总能开怀大笑😀。</br>
+</br>
+无论如何，最后祝愿JoJo宝贝生日快乐🎂，永远开心🥳，永远健康🫛，永远幸福💓！26岁的时光更加热烈且美好🪄！</br>
+
+
+</div>
+
+        <img src="img/stars.png" class="stars1">
+        <img src="img/stars.png" class="stars2">
+        <img src="img/bird.gif" class="bird1">
+        <img src="img/bird.gif" class="bird2">
+        <!-- 
+        <section class="window" id="computer">
+
+            <header class="window-header" id="computerHeader">
+
+                <section class="buttons">
+                    <span class="minimize" onclick="maximizeHandler('computer')">
+                        <img src="img/maximize.png" alt="">
+                    </span>
+                    <span class="close" onclick="windowHandler('computer')">
+                        <img src="img/close.png">
+                    </span>
+                </section>
+                <span class="window-name">Robin's PC</span>
+            </header>
+
+            <section class="window-content computer">
+
+                <aside>
+                    <div class="user">
+                        <img src="img/user.png">
+                    </div>
+
+                    <div>
+                        <p>
+                            <img src="img/star.png">
+                            favorites
+                        </p>
+
+                        <p>
+                            <img src="img/folder.png">
+                            downloads
+                        </p>
+                        <p>
+                            <img src="img/files.png">
+                            documents
+                        </p>
+
+                        <p>
+                            <img src="img/trash.png">
+                            trash
+                        </p>
+                        <p>
+                            <img src="img/dwarf.png">
+                            C:/system
+                        </p>
+                    </div>
+                </aside>
+
+                <main class="folders">
+                    <div class="subfolder">
+                        <ul class="icons">
+
+                            <li class="icon">
+                                <img src="img/icon1.png">
+                                <h1>images</h1>
+                            </li>
+
+                            <li class="icon">
+                                <img src="img/icon1.png">
+                                <h1>games</h1>
+                            </li>
+
+                            <li class="icon">
+                                <img src="img/icon1.png">
+                                <h1>movies</h1>
+                            </li>
+                        </ul>
+                    </div>
+                </main>
+
+            </section>
+
+        </section>
+        <section class="window" id="trash">
+
+            <header class="window-header" id="computerTrash">
+                <section class="buttons">
+                    <span class="minimize" onclick="maximizeHandler('trash')">
+                        <img src="img/maximize.png" alt="">
+                    </span>
+                    <span class="close" onclick="windowHandler('trash')">
+                        <img src="img/close.png">
+                    </span>
+                </section>
+                <span class="window-name">trash</span>
+            </header>
+
+            <section class="window-content computer">
+
+                <aside>
+                    <div class="user">
+                        <img src="img/user.png">
+                    </div>
+
+                    <div>
+                        <p>
+                            <img src="img/star.png">
+                            favorites
+                        </p>
+                        <p>
+                            <img src="img/folder.png">
+                            downloads
+                        </p>
+                        <p>
+                            <img src="img/files.png">
+                            documents
+                        </p>
+
+                        <p>
+                            <img src="img/trash.png">
+                            trash
+                        </p>
+                        <p>
+                            <img src="img/dwarf.png">
+                            C:/system
+                        </p>
+                    </div>
+                </aside>
+
+                <main class="folders">
+                    <div class="subfolder">
+                        <ul id="trash" class="icons">
+
+                            <li class="icon">
+                                <img src="img/t2.png">
+                                <h1>mod_list.txt</h1>
+                            </li>
+
+                            <li class="icon">
+                                <img src="img/t2.png">
+                                <h1>testing.txt</h1>
+                            </li>
+
+                            <li class="icon">
+                                <img src="img/t1.png">
+                                <h1>bad-vibes.mp3</h1>
+                            </li>
+                        </ul>
+                    </div>
+                </main>
+
+            </section> -->
+
+        </section>
+        <section class="window hidded" id="wiki">
+
+            <header class="window-header" id="wikiHeader">
+                <section class="buttons">
+                    <span class="minimize" onclick="maximizeHandler('wiki')">
+                        <img src="img/maximize.png" alt="">
+                    </span>
+                    <span class="close" onclick="windowHandler('wiki')">
+                        <img src="img/close.png">
+                    </span>
+                </section>
+                <span class="window-name">Happy Email</span>
+            </header>
+            <img id="randomEmail" src="./img/happybirthday2.png" alt="Random Email" loading="lazy" class="window-content"
+                style="width: 100%; height: auto; display: block;">
+
+        </section>
+        <!--<section class="window hidded" id="browser">-->
+
+        <!--    <header class="window-header" id="browserHeader">-->
+        <!--        <section class="buttons">-->
+        <!--            <span class="minimize" onclick="maximizeHandler('browser')">-->
+        <!--                <img src="img/maximize.png" alt="">-->
+        <!--            </span>-->
+        <!--            <span class="close" onclick="windowHandler('browser')">-->
+        <!--                <img src="img/close.png">-->
+        <!--            </span>-->
+        <!--        </section>-->
+        <!--        <span class="window-name">Bing</span>-->
+        <!--    </header>-->
+        <!--    <iframe src="https://www.bing.com/?cc=br" frameborder="0"></iframe>-->
+
+        <!--</section>-->
+        <section class="window hidded" id="map">
+            <header class="window-header" id="mapHeader">
+                <section class="buttons"> <span class="minimize" onclick="maximizeHandler('map')"> <img
+                            src="img/maximize.png" alt="">
+                    </span> <span class="close" onclick="windowHandler('map')">
+                        <img src="img/close.png"> </span> </section>
+                <span class="window-name">Happy Map</span>
+            </header> <iframe src="https://stardew.info/planner/" loading="lazy"></iframe>
+        </section>
+
+        <section class="window hidded" id="play">
+            <header class="window-header" id="playHeader">
+                <section class="buttons"> <span class="minimize" onclick="maximizeHandler('play')"> <img
+                            src="img/maximize.png" alt="">
+                    </span> <span class="close" onclick="windowHandler('play')">
+                        <img src="img/close.png"> </span> </section>
+                <span class="window-name">Happy fishing</span>
+            </header>
+            <iframe id="playIframe" data-src="./happyfishing2025.html"></iframe>
+        </section>
+
+        <section id="play" class="current-date">
+            <span class="time">
+                <span id="currentHour"></span>:<span id="currentMinute"></span>
+            </span>
+            <span class="date">
+                <span id="currentDay"></span>/<span id="currentMonth"></span>/<span id="currentYear"></span>
+            </span>
+        </section>
+        <!-- <section class="subicon">
+            <ul class="icons">
+
+                <li class="icon">
+                    <img src="img/dwarf.png" onclick="windowHandler('computer')">
+                    <h1>computer</h1>
+                </li>
+                <li class="icon">
+                    <img src="img/star.png" onclick="windowHandler('computer')">
+                    <h1>favorites</h1>
+                </li>
+                <li class="icon">
+                    <img src="img/files.png" onclick="windowHandler('computer')">
+                    <h1>documents</h1>
+                </li>
+                <!-- <li class="icon">-->
+        <!--    <img src="img/star.png">-->
+        <!--    <h1>settings</h1>-->
+        <!--</li> -->
+        <!-- <li class="icon">
+                    <img src="img/trash.png" onclick="windowHandler('trash')">
+                    <h1>trash</h1>
+                </li>
+            </ul>
+        </section> -->
+    </main>
+
+    <footer>
+
+        <section class="icon-wrapper">
+            <section class="radioPlayer">
+                <div class="player">
+
+                    <img id="backImage" src="img/song-prev.png">
+
+                    <img id="swapImage" src="img/song1.png">
+
+                    <img id="nextImage" src="img/song-next.png">
+
+                    <img id="stopImage" class="stopImage" src="img/music-off.png">
+                </div>
+                <div class="playlist">
+                    <div class="song" url="audio/0.mp3">
+                    </div>
+                    <div class="song" url="audio/1.mp3">
+                    </div>
+                    <div class="song" url="audio/2.mp3">
+                    </div>
+                    <div class="song" url="audio/3.mp3">
+                    </div>
+                    <div class="song" url="audio/4.mp3">
+                    </div>
+                </div>
+            </section>
+            <img src="img/m5.png" onclick="windowHandler('wiki')">
+            <img src="img/m1.png" onclick="windowHandler('map')">
+            <img src="img/m4.png" onclick="windowHandler('play')">
+            <a href="./happywish2025.html">
+                <img src="img/m6.png">
+            </a>
+        </section>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/audioPlayer.js"></script>
+
+</body>
+
+</html>
